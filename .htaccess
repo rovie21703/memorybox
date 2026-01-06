@@ -1,0 +1,4 @@
+# Root .htaccess - delegated to subdirectories
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+</IfModule>

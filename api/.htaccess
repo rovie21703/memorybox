@@ -1,0 +1,39 @@
+Options -Indexes
+
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+    RewriteBase /api/
+
+    # Handle Authorization Header
+    RewriteCond %{HTTP:Authorization} .
+    RewriteRule .* - [E=HTTP_AUTHORIZATION:%{HTTP:Authorization}]
+
+    # Auth endpoints
+    RewriteRule ^auth/?$ auth/index.php [L,QSA]
+    RewriteRule ^auth/(.*)$ auth/index.php?action=$1 [L,QSA]
+
+    # Photos endpoints
+    RewriteRule ^photos/?$ photos/index.php [L,QSA]
+    RewriteRule ^photos/([0-9]+)$ photos/index.php?id=$1 [L,QSA]
+    RewriteRule ^photos/([0-9]+)/(.*)$ photos/index.php?id=$1&action=$2 [L,QSA]
+
+    # Memories endpoints
+    RewriteRule ^memories/?$ memories/index.php [L,QSA]
+    RewriteRule ^memories/(.*)$ memories/index.php?action=$1 [L,QSA]
+
+    # Messages endpoints
+    RewriteRule ^messages/?$ messages/index.php [L,QSA]
+    RewriteRule ^messages/(.*)$ messages/index.php?action=$1 [L,QSA]
+
+    # Anniversaries endpoints
+    RewriteRule ^anniversaries/?$ anniversaries/index.php [L,QSA]
+    RewriteRule ^anniversaries/(.*)$ anniversaries/index.php?action=$1 [L,QSA]
+</IfModule>
+
+# PHP settings
+<IfModule mod_php.c>
+    php_flag display_errors Off
+    php_value max_execution_time 300
+    php_value upload_max_filesize 50M
+    php_value post_max_size 50M
+</IfModule>

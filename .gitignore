@@ -1,0 +1,22 @@
+# Environment files
+api/config/env.php
+
+# Dependencies
+frontend/node_modules/
+
+# Uploaded files (optional - remove if you want to include uploads)
+uploads/photos/*
+uploads/thumbnails/*
+!uploads/photos/.gitkeep
+!uploads/thumbnails/.gitkeep
+
+# IDE
+.vscode/
+.idea/
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
